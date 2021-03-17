@@ -18,9 +18,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-index wechat-index.go
 FROM alpine:latest
 
 WORKDIR /
-COPY --from=builder /go/src/wechat-go/mywechat . 
-COPY --from=builder /go/src/wechat-go/wechat-db . 
-COPY --from=builder /go/src/wechat-go/wechat-index .
+COPY --from=builder /mywechat . 
+COPY --from=builder /wechat-db . 
+COPY --from=builder /wechat-index .
 ADD entrypoint.sh /entrypoint.sh
 RUN  chmod +x /mywechat && chmod +x /wechat-index && chmod +x /wechat-db  && chmod 777 /entrypoint.sh
 ENTRYPOINT  /entrypoint.sh 
