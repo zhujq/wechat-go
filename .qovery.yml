@@ -1,14 +1,14 @@
 ---
 application:
   name: "wechat-go"
-  project: "wechat-go"
+  project: "zhu"
   organization: "QoveryCommunity"
 databases:
 - type: "MYSQL"
-  name: "wechat"
-  version: "8.0"
+  name: "wechat-mysql"
+  version: "6"
 - type: "REDIS"
-  name: "wechat"
+  name: "wechat-redis"
   version: "6"
 routers:
 - name: "main-wechat-go"
