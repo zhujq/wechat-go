@@ -4,7 +4,7 @@ WORKDIR $GOPATH/src/wechat-go
 COPY . .
 
 RUN apk add --no-cache git && set -x && \
-    go get -d -v
+    go mod init && go get -d -v
 #    go get  github.com/go-sql-driver/mysql && \
 #    go get  github.com/devfeel/dotweb && \
 #    go get  github.com/bitly/go-simplejson && \
