@@ -7,8 +7,7 @@ RUN set -x && \
     go get github.com/devfeel/dotweb && \
     go get github.com/bitly/go-simplejson && \
     go get github.com/garyburd/redigo/redis && \
-    go get github.com/enescakir/emoji && \
-    dep ensure -v
+    go get github.com/enescakir/emoji 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /mywechat mywechat-main.go
 RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-db wechat-db.go
 RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-index wechat-index.go
