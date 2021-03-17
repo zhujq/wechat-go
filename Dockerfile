@@ -1,15 +1,15 @@
 FROM golang:1.16-alpine3.13 as builder
 
-
-COPY . "/go/src/wechat-go"
-WORKDIR "/go/src/wechat-go"
+WORKDIR $GOPATH/src/wechat-go
+COPY . .
 
 RUN apk add --no-cache git && set -x && \
-    go get  github.com/go-sql-driver/mysql && \
-    go get  github.com/devfeel/dotweb && \
-    go get  github.com/bitly/go-simplejson && \
-    go get  github.com/garyburd/redigo/redis && \
-    go get  github.com/enescakir/emoji 
+    go get -d -v
+#    go get  github.com/go-sql-driver/mysql && \
+#    go get  github.com/devfeel/dotweb && \
+#    go get  github.com/bitly/go-simplejson && \
+#    go get  github.com/garyburd/redigo/redis && \
+#    go get  github.com/enescakir/emoji 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /mywechat mywechat-main.go
 RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-db wechat-db.go
 RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-index wechat-index.go
