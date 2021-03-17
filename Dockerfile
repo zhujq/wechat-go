@@ -1,6 +1,6 @@
 FROM golang:1.16-alpine3.13 as builder
 
-RUN go versioin
+
 COPY . "/go/src/wechat-go"
 WORKDIR "/go/src/wechat-go"
 
