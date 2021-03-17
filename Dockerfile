@@ -1,8 +1,8 @@
 FROM golang:1.10.1-alpine3.7 as builder
 COPY *.go .
 RUN CGO_ENABLED=0 GOOS=linux go build -o /mywechat mywechat-main.go
-RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-db wechat-db
-RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-db wechat-db.go.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-db wechat-db.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /wechat-index wechat-index.go
 
 
 FROM alpine:latest
