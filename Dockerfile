@@ -1,5 +1,6 @@
 FROM golang:1.16-alpine3.13 as builder
 ENV GO111MODULE=on
+COPY go.mod .
 COPY mywechat-main.go .
 COPY wechat-db.go .
 COPY wechat-index.go .
