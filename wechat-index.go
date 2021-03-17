@@ -29,8 +29,8 @@ type ResBody struct {
 	Mediathumb  string `json:"mediathumb"`
 }
 
-const Dbconn = "zhujq:Juju1234@tcp(wechat-mysql:3306)/wechat"
-//const Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
+//const Dbconn = "zhujq:Juju1234@tcp(wechat-mysql:3306)/wechat"
+const Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
 
 func NewApp() *App {
 	var a = &App{}

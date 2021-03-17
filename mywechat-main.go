@@ -42,8 +42,8 @@ const GetOuttelnuminfoUrl ="https://api.veriphone.io/v2/verify?key=0F0466BD78084
 const GetHeadnewsUrl = "https://api.isoyu.com/api/News/banner"
 const CommMsg = "找不到什么东东回你了......"
 const GetEntocnUrl = "http://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i="
-const RedisDB = "wechat-redis:6379"
-//const RedisDB = "redis-12069.c1.us-east1-2.gce.cloud.redislabs.com:12069"
+//const RedisDB = "wechat-redis:6379"
+const RedisDB = "redis-12069.c1.us-east1-2.gce.cloud.redislabs.com:12069"
 const RedisPWD ="Juju1234"
 //const RedisPWD ="bZbvrprPKsz7ttNxanwYGSDhMgNXQdfy"
 
