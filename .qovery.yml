@@ -1,7 +1,7 @@
 ---
 application:
   name: "wechat-go"
-  project: "zhu"
+  project: "wechat-go"
   organization: "QoveryCommunity"
 databases:
 - type: "MYSQL"
