@@ -2,7 +2,7 @@ FROM golang:1.10.1-alpine3.7 as builder
 COPY mywechat-main.go .
 COPY wechat-db.go .
 COPY wechat-index.go .
-RUN set -x && \
+RUN apk add --no-cache git && set -x && \
     go get github.com/go-sql-driver/mysql && \
     go get github.com/devfeel/dotweb && \
     go get github.com/bitly/go-simplejson && \
