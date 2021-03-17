@@ -1,4 +1,4 @@
-FROM golang:1.10.1-alpine3.7 as builder
+FROM golang:1.16-alpine3.13 as builder
 COPY mywechat-main.go .
 COPY wechat-db.go .
 COPY wechat-index.go .
