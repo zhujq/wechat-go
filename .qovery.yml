@@ -11,7 +11,7 @@ application:
 databases:
 - type: "MYSQL"
   name: "wechat-mysql"
-  version: "5.5"
+  version: "5"
 - type: "REDIS"
   name: "wechat-redis"
   version: "5"
