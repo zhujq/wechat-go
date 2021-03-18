@@ -1037,7 +1037,7 @@ func main() {                                         //主函数入口
 	
 	if os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_HOST")!="" &&  os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PORT")!="" && os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PASSWORD")!="" {
     		RedisDB = os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_HOST")+":"+os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PORT")
-   	 	RedisPWD = os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PASSWORD")
+   	 		RedisPWD = os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PASSWORD")
 	}else{
     		RedisDB = "redis-12069.c1.us-east1-2.gce.cloud.redislabs.com:12069"
     		RedisPWD ="Juju1234"
@@ -1047,6 +1047,7 @@ func main() {                                         //主函数入口
         log.Println("Connect to redis error", err)
         
 	}
+	log.Println("connected to redis:"+RedisDB)
 	defer redisconn.Close()
 /*
 	if _, err = redisconn.Do("AUTH", "Juju1234"); err != nil {
