@@ -30,7 +30,8 @@ type ResBody struct {
 }
 
 //const Dbconn = "zhujq:Juju1234@tcp(wechat-mysql:3306)/wechat"
-const Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
+//const Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
+var Dbconn string
 
 func NewApp() *App {
 	var a = &App{}
@@ -78,6 +79,11 @@ func main() {
 		log.Fatal(err)
 		os.Exit(1)
 	}
+
+	Dbconn = os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_USERNAME") + ":"+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PASSWORD") + "@tcp(" + os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_HOST") + ":" + os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PORT") + ")/" + os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_NAME")
+	if Dbconn == ""{
+    		Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
+	}	
 
 	db, err = sql.Open("mysql",Dbconn)
 	db.SetConnMaxLifetime(0)

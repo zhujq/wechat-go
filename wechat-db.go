@@ -273,8 +273,8 @@ func RefreshData() bool {
 	return true
 }
 
-func main() {                                         //主函数入口
-	Dbconn = os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_USERNAME")+":"+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PASSWORD")+"@tcp("+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_HOST")+":"+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PORT")+")"/+ os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_NAME")
+func main() {    //主函数入口
+	Dbconn = os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_USERNAME") + ":"+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PASSWORD") + "@tcp(" + os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_HOST") + ":" + os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PORT") + ")/" + os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_NAME")
 	if Dbconn == ""{
     		Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
 	}	
@@ -282,9 +282,9 @@ func main() {                                         //主函数入口
 	defer tick.Stop()
 	RefreshData() 
   	for {
-    		select {
+    	select {
 			case <-tick.C:
 				RefreshData() 
-    		}
+    	}
   	}
 }
