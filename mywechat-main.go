@@ -43,8 +43,9 @@ const GetHeadnewsUrl = "https://api.isoyu.com/api/News/banner"
 const CommMsg = "找不到什么东东回你了......"
 const GetEntocnUrl = "http://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i="
 //const RedisDB = "wechat-redis:6379"
-const RedisDB = "redis-12069.c1.us-east1-2.gce.cloud.redislabs.com:12069"
-const RedisPWD ="Juju1234"
+//const RedisDB = "redis-12069.c1.us-east1-2.gce.cloud.redislabs.com:12069"
+//const RedisPWD ="Juju1234"
+var  RedisDB,RedisPWD string
 //const RedisPWD ="bZbvrprPKsz7ttNxanwYGSDhMgNXQdfy"
 
 type TextRequestBody struct {                    //请求结构，需要解析xml后才能赋值给它
@@ -1033,7 +1034,14 @@ func main() {                                         //主函数入口
 		fmt.Println("v1.0")
 		os.Exit(0)
 	}
-
+	
+	if os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_HOST")!="" &&  os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PORT")!="" && os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PASSWORD")!="" {
+    		RedisDB = os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_HOST")+":"+os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PORT")
+   	 	RedisPWD = os.Getenv("QOVERY_DATABASE_WECHAT_REDIS_PASSWORD")
+	}else{
+    		RedisDB = "redis-12069.c1.us-east1-2.gce.cloud.redislabs.com:12069"
+    		RedisPWD ="Juju1234"
+	}
 	redisconn, err = redis.Dial("tcp", RedisDB,redis.DialKeepAlive(time.Hour*48),redis.DialPassword(RedisPWD))  //连接redis数据库，记录用户文本记录和预处理
 	if err != nil {                                   //如果无法连接redis数据库，不返回继续处理
         log.Println("Connect to redis error", err)
