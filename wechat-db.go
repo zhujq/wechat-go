@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"time"
-//	"os"
+	"os"
 	"log"
 	"bytes"
 //	"io"
@@ -18,7 +18,8 @@ const GetTokenUrl = "http://token.zhujq.ga:1080/token?appid=wxf183d5e1fe4d5204"
 
 const GetMaterialSum = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token="
 const GetMaterial = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token="
-const Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
+//const Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
+var Dbconn string
 //const Dbconn = "zhujq:Juju1234@tcp(wechat-mysql:3306)/wechat"
 const GetMediainfo = "https://api.weixin.qq.com/cgi-bin/material/get_material?access_token="
 
@@ -273,6 +274,10 @@ func RefreshData() bool {
 }
 
 func main() {                                         //主函数入口
+	Dbconn = os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_USERNAME")+":"+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PASSWORD")+"@tcp("+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_HOST")+":"+os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_PORT")+")/+ os.Getenv("QOVERY_DATABASE_WECHAT_MYSQL_NAME")
+	if Dbconn == ""{
+    		Dbconn = "freedbtech_zhujq:Juju1234@tcp(freedb.tech:3306)/freedbtech_wechat"
+	}	
 	tick :=time.NewTicker( 24 * time.Hour)
 	defer tick.Stop()
 	RefreshData() 
