@@ -1,12 +1,20 @@
 ---
 application:
   name: "wechat-go"
-  project: "zhujq"
+  project: "mywechat"
   organization: "QoveryCommunity"
+  storage:
+  - name: "data"
+    size: "10"
+    type: "ssd"
+    mount_point: "/mnt/data"
 databases:
+- type: "MYSQL"
+  name: "wechat-mysql"
+  version: "8.0"
 - type: "REDIS"
-  name: "wechat"
-  version: "6"
+  name: "wechat-redis"
+  version: "8.0"
 routers:
 - name: "main-wechat-go"
   routes:
